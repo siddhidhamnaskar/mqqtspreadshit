@@ -20,12 +20,12 @@ const conf = {
 
 
 // create .env file and transfer hard coded to .env file
-const connect = async() => {
+const connect =() => {
     const logPath = path.resolve(__dirname, 'mqtt.log');
 
-    var clientmqtt = mqtt.connect(`${process.env.API}`, {
-        username: 'gvcsnv',
-        password: 'snv@220787'
+    var clientmqtt = mqtt.connect(`${process.env.BROKER}`, {
+        username: process.env.USER_NAME,
+        password: process.env.PASSWORD
     });
 
     clientmqtt.on('connect', function () {
@@ -83,13 +83,14 @@ const day = ('0' + currentDate.getDate()).slice(-2);
 const hours = ('0' + currentDate.getHours()).slice(-2);
 const minutes = ('0' + currentDate.getMinutes()).slice(-2);
 const seconds = ('0' + currentDate.getSeconds()).slice(-2);
-
-              await sheet.addRow({"Date":`${year}-${month}-${day}`,"Time":`${hours}:${minutes}:${seconds}`,"From":from,"To":parts[1] });
+            
+              await sheet.addRow( {"Date":`${year}-${month}-${day}`,"Time":`${hours}:${minutes}:${seconds}`,"From":from,"To":parts[1] });
             //   await sheet.addRows(dataArray); // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
-              console.log(sheet.title);
+            //  return console.log(sheet.title);
             }
-        else
+        else{
             return;
+        }
 
 
 
