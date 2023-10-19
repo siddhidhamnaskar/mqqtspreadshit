@@ -21,6 +21,7 @@ const conf = {
 
 // create .env file and transfer hard coded to .env file
 const connect =() => {
+    console.log(`mqqt to google-spreadsheet 19 oct 23`)
     const logPath = path.resolve(__dirname, 'mqtt.log');
 
     var clientmqtt = mqtt.connect(`${process.env.BROKER}`, {
@@ -64,7 +65,7 @@ const connect =() => {
               const doc = new GoogleSpreadsheet('1xxdNkuV6359yEQwGmYSEfoT1uuFFFz8bYCINDK9caZU', serviceAccountAuth);
               
               await doc.loadInfo(); // loads document properties and worksheets
-              console.log(doc.title);
+            //   console.log(doc.title);
               await doc.updateProperties({ title: 'MQQT' });
               
               const sheet = doc.sheetsByIndex[0];
@@ -88,9 +89,9 @@ const seconds = ('0' + currentDate.getSeconds()).slice(-2);
             //   await sheet.addRows(dataArray); // or use `doc.sheetsById[id]` or `doc.sheetsByTitle[title]`
             //  return console.log(sheet.title);
             }
-        else{
+        else
             return;
-        }
+        
 
 
 
