@@ -1,4 +1,4 @@
-const { sequelize,MqttMessage,MinuteData }=require('./models');
+const { sequelize,MqttMessage,MinuteData,Transaction }=require('./models');
 const mqtt = require('mqtt')
 const fs = require('fs')
 const path = require('path')
@@ -85,6 +85,7 @@ const day = ('0' + currentDate.getDate()).slice(-2);
 const hours = ('0' + currentDate.getHours()).slice(-2);
 const minutes = ('0' + currentDate.getMinutes()).slice(-2);
 const seconds = ('0' + currentDate.getSeconds()).slice(-2);
+              await Transaction.create({machine:parts[1],command:"SSN",p1:from})
               await MqttMessage.create({date:`${year}-${month}-${day}`,time:`${hours}:${minutes}:${seconds}`,from:from,to:parts[1]});
             // const record = await MinuteData.create({machines_running:67,cashCollected:437,items_vend:26362});
               await sheet.addRow( {"Date":`${year}-${month}-${day}`,"Time":`${hours}:${minutes}:${seconds}`,"From":from,"To":parts[1] });

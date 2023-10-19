@@ -6,7 +6,8 @@ const db=require('./models/index');
 // const record=require('./routes/minuteWiseData');
 const connectMqtt=require("./routes/mqtt")
 const dotenv=require('dotenv');
-// const cors=require("cors");
+const transaction=require('./routes/transactions')
+const cors=require("cors");
 const sequelize=require('./squelize');
 dotenv.config()
 
@@ -20,6 +21,7 @@ dotenv.config()
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/mqtt',connectMqtt);
+// app.use('/transactions',transaction)
 
 
 
