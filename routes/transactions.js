@@ -1,7 +1,7 @@
 const express=require('express');
 
 const router=express.Router();
-const { sequelize,Transaction}=require('../models');
+// const { sequelize,Transaction}=require('../models');
 
 
 
@@ -22,18 +22,18 @@ const { sequelize,Transaction}=require('../models');
 // }
 
 
-const GetData=async(req,res)=>{
-  try{
-    const data=await Transaction.findAll();
-    res.status(200).json(data);
-  }
-  catch(err){
-    console.log(err);
-    res.status(505).json(err)
-  }
+// const GetData=async(req,res)=>{
+//   try{
+//     const data=await Transaction.findAll();
+//     res.status(200).json(data);
+//   }
+//   catch(err){
+//     console.log(err);
+//     res.status(505).json(err)
+//   }
   
 
-}
+// }
 
 // router.get('/api/query',async (req, res) => {
 //     // const queryParams = req.query; // This object contains the query parameters
@@ -48,5 +48,5 @@ const GetData=async(req,res)=>{
 //     res.json({ message: `Hello, ${name}!` });
 //   });
 
-router.get('/',GetData)
-module.exports=router
+// router.get('/',GetData)
+// module.exports=router

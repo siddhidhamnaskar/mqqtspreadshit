@@ -6,7 +6,7 @@ const db=require('./models/index');
 // const record=require('./routes/minuteWiseData');
 const connectMqtt=require("./routes/mqtt")
 const dotenv=require('dotenv');
-const transaction=require('./routes/transactions')
+// const transaction=require('./routes/transactions')
 const cors=require("cors");
 const sequelize=require('./squelize');
 dotenv.config()
