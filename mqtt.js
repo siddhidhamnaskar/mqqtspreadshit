@@ -63,7 +63,7 @@ const connect =() => {
                 ],
               });
               
-              const doc = new GoogleSpreadsheet('1xxdNkuV6359yEQwGmYSEfoT1uuFFFz8bYCINDK9caZU', serviceAccountAuth);
+              const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID, serviceAccountAuth);
               
               await doc.loadInfo(); // loads document properties and worksheets
             //   console.log(doc.title);
